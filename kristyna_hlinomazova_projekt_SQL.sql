@@ -44,45 +44,45 @@ ORDER BY payroll_data.payroll_year, payroll_data.industry_name;
 -- 2. TVORBA SEKUNDÁRNÍ TABULKY 
 CREATE TABLE t_kristyna_hlinomazova_project_SQL_secondary_final AS
 SELECT
-   e.year,
-   c.country,
-   ROUND(e.population) AS population,
-   ROUND(e.gdp::numeric, 0) AS gdp,
-   ROUND(e.gini::numeric, 1) AS gini
+	e.year,
+	c.country,
+	ROUND(e.population) AS population,
+	ROUND(e.gdp::numeric, 0) AS gdp,
+	ROUND(e.gini::numeric, 1) AS gini
 FROM countries AS c
 JOIN economies AS e
-   ON c.country = e.country
+	ON c.country = e.country
 WHERE c.continent = 'Europe'
- AND e.year BETWEEN 2006 AND 2018; -- Aby to sedělo k mzdám v ČR
+	AND e.year BETWEEN 2006 AND 2018; -- Aby to sedělo k mzdám v ČR
 
 -- 3. VÝZKUMNÉ OTÁZKY
 -- Q1: Rostou v průběhu let mzdy ve všech odvětvích, nebo v některých klesají?
 -- Identifikace konkrétních odvětví a let, kdy došlo k meziročnímu poklesu
 SELECT *
 FROM (
-   SELECT
-       industry_name,
-       payroll_year,
-       avg_month_salary_czk,
-       avg_month_salary_czk - LAG(avg_month_salary_czk) OVER (PARTITION BY industry_name ORDER BY payroll_year) AS salary_diff
-   FROM (
-       SELECT DISTINCT industry_name, payroll_year, avg_month_salary_czk
-       FROM t_kristyna_hlinomazova_project_SQL_primary_final
-   ) AS selected_payroll_data
+	SELECT
+		industry_name,
+		payroll_year,
+		avg_month_salary_czk,
+		avg_month_salary_czk - LAG(avg_month_salary_czk) OVER (PARTITION BY industry_name ORDER BY payroll_year) AS salary_diff
+	FROM (
+		SELECT DISTINCT industry_name, payroll_year, avg_month_salary_czk
+		FROM t_kristyna_hlinomazova_project_SQL_primary_final
+	) AS selected_payroll_data
 ) AS final_table
 WHERE salary_diff < 0  
 ORDER BY salary_diff ASC; 
 
 -- Celkové porovnání platů mezi prvním (2006) a posledním (2018) rokem
 SELECT
-   industry_name,
-   MAX(CASE WHEN payroll_year = 2006 THEN avg_month_salary_czk END) AS salary_2006,
-   MAX(CASE WHEN payroll_year = 2018 THEN avg_month_salary_czk END) AS salary_2018,
-   MAX(CASE WHEN payroll_year = 2018 THEN avg_month_salary_czk END) -
-   MAX(CASE WHEN payroll_year = 2006 THEN avg_month_salary_czk END) AS total_growth_czk
+	industry_name,
+	MAX(CASE WHEN payroll_year = 2006 THEN avg_month_salary_czk END) AS salary_2006,
+	MAX(CASE WHEN payroll_year = 2018 THEN avg_month_salary_czk END) AS salary_2018,
+	MAX(CASE WHEN payroll_year = 2018 THEN avg_month_salary_czk END) -
+	MAX(CASE WHEN payroll_year = 2006 THEN avg_month_salary_czk END) AS total_growth_czk
 FROM (
-   SELECT DISTINCT industry_name, payroll_year, avg_month_salary_czk
-   FROM t_kristyna_hlinomazova_project_SQL_primary_final
+	SELECT DISTINCT industry_name, payroll_year, avg_month_salary_czk
+	FROM t_kristyna_hlinomazova_project_SQL_primary_final
 ) AS clean_data
 GROUP BY industry_name
 ORDER BY total_growth_czk DESC;
@@ -95,7 +95,7 @@ FROM t_kristyna_hlinomazova_project_sql_primary_final AS tkhpspf
 WHERE tkhpspf.food_category IN ('Mléko polotučné pasterované','Chléb konzumní kmínový')
 AND tkhpspf.payroll_year IN (
 	(SELECT MIN(payroll_year) FROM t_kristyna_hlinomazova_project_sql_primary_final),
-   (SELECT MAX(payroll_year) FROM t_kristyna_hlinomazova_project_sql_primary_final));
+	(SELECT MAX(payroll_year) FROM t_kristyna_hlinomazova_project_sql_primary_final));
 
 -- Souhrnný výpočet z průměrné celorepublikové mzdy
 SELECT
