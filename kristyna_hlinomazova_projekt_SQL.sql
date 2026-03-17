@@ -29,16 +29,16 @@ price_data AS (
 )
 -- Finální spojení pro kontrolu dat
 SELECT
-   payroll_data.payroll_year,
-   payroll_data.industry_name,
-   payroll_data.avg_month_salary_czk,
-   price_data.food_category,
-   price_data.avg_price_czk,
-   price_data.price_value,
-   price_data.price_unit
+	payroll_data.payroll_year,
+	payroll_data.industry_name,
+	payroll_data.avg_month_salary_czk,
+	price_data.food_category,
+	price_data.avg_price_czk,
+	price_data.price_value,
+	price_data.price_unit
 FROM payroll_data
 JOIN price_data
-   ON payroll_data.payroll_year = price_data.price_year
+	ON payroll_data.payroll_year = price_data.price_year
 ORDER BY payroll_data.payroll_year, payroll_data.industry_name;
 
 -- 2. TVORBA SEKUNDÁRNÍ TABULKY 
