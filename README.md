@@ -1,21 +1,21 @@
 **Analýza dostupnosti základních potravin (SQL Projekt)**
 
-**a. Zadání projektu**
+**1. Zadání projektu**
 Cílem projektu bylo připravit robustní datový podklad pro porovnání dostupnosti základních potravin na základě průměrných příjmů v ČR v letech 2006–2018. Součástí bylo i srovnání s HDP a demografickými daty evropských států.
 
-**b. Popis tvorby primární a sekundární tabulky**
+**2. Popis tvorby primární a sekundární tabulky**
 Pro účely analýzy byly vytvořeny dvě hlavní datové sady:
 
 t_kristyna_hlinomazova_project_SQL_primary_final: Tato tabulka sjednocuje data o průměrných mzdách (podle odvětví) a cenách vybraných kategorií potravin. Data byla filtrována na společné kalendářní roky pro zajištění porovnatelnosti.
 
 t_kristyna_hlinomazova_project_SQL_secondary_final: Tato tabulka obsahuje dodatečná makroekonomická data (HDP, GINI koeficient a populace) pro ostatní evropské státy ve stejném období.
 
-**c. Výzkumné otázky a odpovědi**
+**3. Výzkumné otázky a odpovědi**
 
 **Chybějící a neúplná data**
 Vzhledem k tomu, že data o cenách potravin jsou dostupná až od roku 2006, byla analýza omezena na období 2006–2018, ačkoliv mzdová data sahají až do roku 2000. V tabulce mezd se vyskytují záznamy s hodnotou NULL u odvětví, které však nepředstavují chybu, nýbrž celorepublikový průměr využitý pro výpočet celkové kupní síly. Z důvodu regionální neúplnosti u cen potravin pracuje analýza s celorepublikovými průměry. Do srovnání zdražování byly zahrnuty pouze potraviny se souvislou řadou dat, čímž byly vyloučeny položky s výpadky či pozdějším počátkem sledování.
 
-**1. Rostou v průběhu let mzdy ve všech odvětvích, nebo v některých klesají?**
+**. Rostou v průběhu let mzdy ve všech odvětvích, nebo v některých klesají?**
 Při pohledu na celkové období 2006–2018 mzdy vzrostly ve všech sledovaných odvětvích. Nejvyšší celkový nárůst zaznamenalo odvětví Informační a komunikační činnosti, kde mzda stoupla o 20 935 Kč. Nicméně, při detailním meziročním srovnání analýza odhalila, že mzdy v určitých letech klesaly. V rámci analýzy byl jako kritický rok identifikován rok 2013, kdy došlo k poklesu průměrných mezd u většiny sledovaných odvětví. Nejvýraznější propad v tomto období pocítilo peněžnictví a pojišťovnictví, kde průměrná mzda klesla o 4 484 Kč. Tento negativní trend se projevil i v dalších sektorech, jako byla výroba a rozvod elektřiny, plynu a tepla s poklesem o 1 895 Kč, těžba a dobývání se snížením o 1 053 Kč a profesní, vědecké i technické činnosti, kde mzdy poklesly o 992 Kč
 Ostatní roky: K mírnějším poklesům docházelo ojediněle i v letech 2009, 2010 nebo 2011.
 Závěr: Dlouhodobý trend je rostoucí, ale mzdy nejsou imunní vůči meziročním výkyvům, což se nejvíce projevilo během ekonomického útlumu v roce 2013.
