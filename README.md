@@ -1,9 +1,9 @@
 **Analýza dostupnosti základních potravin (SQL Projekt)**
 
-**1. Zadání projektu**
+**a. Zadání projektu**
 Cílem projektu bylo připravit robustní datový podklad pro porovnání dostupnosti základních potravin na základě průměrných příjmů v ČR v letech 2006–2018. Součástí bylo i srovnání s HDP a demografickými daty evropských států.
 
-**2. Popis tvorby primární a sekundární tabulky**
+**b. Popis tvorby primární a sekundární tabulky**
 Pro účely analýzy byly vytvořeny dvě hlavní datové sady:
 
 t_kristyna_hlinomazova_project_SQL_primary_final: Tato tabulka sjednocuje data o průměrných mzdách (podle odvětví) a cenách vybraných kategorií potravin. Data byla filtrována na společné kalendářní roky pro zajištění porovnatelnosti.
