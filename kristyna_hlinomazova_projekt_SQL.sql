@@ -99,39 +99,39 @@ AND tkhpspf.payroll_year IN (
 
 -- Souhrnný výpočet z průměrné celorepublikové mzdy
 SELECT
-   payroll_year,
-   food_category,
-   ROUND(AVG(avg_month_salary_czk), 0) AS avg_national_salary,
-   avg_price_czk,
-   ROUND(AVG(avg_month_salary_czk) / avg_price_czk, 0) AS purchasing_power
+	payroll_year,
+	food_category,
+	ROUND(AVG(avg_month_salary_czk), 0) AS avg_national_salary,
+	avg_price_czk,
+	ROUND(AVG(avg_month_salary_czk) / avg_price_czk, 0) AS purchasing_power
 FROM t_kristyna_hlinomazova_project_sql_primary_final
 WHERE food_category IN ('Mléko polotučné pasterované', 'Chléb konzumní kmínový')
- AND payroll_year IN (
-     (SELECT MIN(payroll_year) FROM t_kristyna_hlinomazova_project_sql_primary_final),
-     (SELECT MAX(payroll_year) FROM t_kristyna_hlinomazova_project_sql_primary_final)
+	AND payroll_year IN (
+	(SELECT MIN(payroll_year) FROM t_kristyna_hlinomazova_project_sql_primary_final),
+	(SELECT MAX(payroll_year) FROM t_kristyna_hlinomazova_project_sql_primary_final)
  )
 GROUP BY payroll_year, food_category, avg_price_czk
 ORDER BY food_category, payroll_year;
 
 -- Q3: Která kategorie potravin zdražuje nejpomaleji (je u ní nejnižší percentuální meziroční nárůst)? 
 WITH price_tables AS (
-  SELECT
-      payroll_year, 
-      food_category,
-      AVG(avg_price_czk) AS avg_price_current_year,
-      LAG(AVG(avg_price_czk)) OVER (PARTITION BY food_category ORDER BY payroll_year) AS avg_price_previous_year
-  FROM t_kristyna_hlinomazova_project_sql_primary_final
-  GROUP BY payroll_year, food_category
+	SELECT
+		payroll_year, 
+		food_category,
+		AVG(avg_price_czk) AS avg_price_current_year,
+		LAG(AVG(avg_price_czk)) OVER (PARTITION BY food_category ORDER BY payroll_year) AS avg_price_previous_yea
+	FROM t_kristyna_hlinomazova_project_sql_primary_final
+	GROUP BY payroll_year, food_category
 ),
 growth_calc AS (
-  SELECT
-      food_category,
-      ROUND((avg_price_current_year / avg_price_previous_year - 1) * 100, 2) AS price_growth_percent
-  FROM price_tables
+	SELECT
+		food_category,
+		ROUND((avg_price_current_year / avg_price_previous_year - 1) * 100, 2) AS price_growth_percent
+	FROM price_tables
 )
 SELECT
-  food_category,
-  ROUND(AVG(price_growth_percent), 2) AS avg_yearly_growth_pct
+	food_category,
+	ROUND(AVG(price_growth_percent), 2) AS avg_yearly_growth_pct
 FROM growth_calc
 WHERE price_growth_percent IS NOT NULL
 GROUP BY food_category
@@ -139,65 +139,65 @@ ORDER BY avg_yearly_growth_pct ASC;
 
 -- Q4: Existuje rok, ve kterém byl meziroční nárůst cen potravin výrazně vyšší než růst mezd (větší než 10 %)?
 WITH growth_comparison AS (
-   SELECT
-       payroll_year,
-       AVG(avg_price_czk) AS avg_price,
-       LAG(AVG(avg_price_czk)) OVER (ORDER BY payroll_year) AS prev_price,
-       AVG(avg_month_salary_czk) AS avg_salary,
-       LAG(AVG(avg_month_salary_czk)) OVER (ORDER BY payroll_year) AS prev_salary
-   FROM t_kristyna_hlinomazova_project_sql_primary_final
-   GROUP BY payroll_year
+	SELECT
+		payroll_year,
+		AVG(avg_price_czk) AS avg_price,
+		LAG(AVG(avg_price_czk)) OVER (ORDER BY payroll_year) AS prev_price,
+		AVG(avg_month_salary_czk) AS avg_salary,
+		LAG(AVG(avg_month_salary_czk)) OVER (ORDER BY payroll_year) AS prev_salary
+	FROM t_kristyna_hlinomazova_project_sql_primary_final
+	GROUP BY payroll_year
 )
 SELECT
-   payroll_year,
-   ROUND((avg_price / prev_price - 1) * 100, 2) AS food_growth,
-   ROUND((avg_salary / prev_salary - 1) * 100, 2) AS wage_growth,
-   ROUND(((avg_price / prev_price - 1) * 100) - ((avg_salary / prev_salary - 1) * 100), 2) AS difference
+	payroll_year,
+	ROUND((avg_price / prev_price - 1) * 100, 2) AS food_growth,
+	ROUND((avg_salary / prev_salary - 1) * 100, 2) AS wage_growth,
+	ROUND(((avg_price / prev_price - 1) * 100) - ((avg_salary / prev_salary - 1) * 100), 2) AS difference
 FROM growth_comparison
 WHERE prev_price IS NOT NULL 
 ORDER BY difference DESC;
 
 -- Q5: Má výška HDP vliv na změny ve mzdách a cenách potravin? Neboli, pokud HDP vzroste výrazněji v jednom roce, projeví se to na cenách potravin či mzdách ve stejném nebo následujícím roce výraznějším růstem?
 WITH base_data AS (
-   SELECT
-       g.year,
-       ROUND(((g.gdp / LAG(g.gdp) OVER (ORDER BY g.year)) - 1) * 100, 2) AS gdp_growth,
-       ROUND(((w.avg_wage / LAG(w.avg_wage) OVER (ORDER BY g.year)) - 1) * 100, 2) AS wage_growth,
-       ROUND(((f.avg_food / LAG(f.avg_food) OVER (ORDER BY g.year)) - 1) * 100, 2) AS food_growth
-   FROM (
-       SELECT year, gdp FROM t_kristyna_hlinomazova_project_sql_secondary_final WHERE country = 'Czech Republic'
+	SELECT
+		g.year,
+		ROUND(((g.gdp / LAG(g.gdp) OVER (ORDER BY g.year)) - 1) * 100, 2) AS gdp_growth,
+		ROUND(((w.avg_wage / LAG(w.avg_wage) OVER (ORDER BY g.year)) - 1) * 100, 2) AS wage_growth,
+		ROUND(((f.avg_food / LAG(f.avg_food) OVER (ORDER BY g.year)) - 1) * 100, 2) AS food_growth
+	FROM (
+		SELECT year, gdp FROM t_kristyna_hlinomazova_project_sql_secondary_final WHERE country = 'Czech Republic'
    ) g
-   JOIN (
-       SELECT payroll_year, AVG(avg_month_salary_czk) AS avg_wage
-       FROM t_kristyna_hlinomazova_project_sql_primary_final GROUP BY payroll_year
+	JOIN (
+		SELECT payroll_year, AVG(avg_month_salary_czk) AS avg_wage
+		FROM t_kristyna_hlinomazova_project_sql_primary_final GROUP BY payroll_year
    ) w ON g.year = w.payroll_year
-   JOIN (
-       SELECT payroll_year, AVG(avg_price_czk) AS avg_food
-       FROM t_kristyna_hlinomazova_project_sql_primary_final GROUP BY payroll_year
+	JOIN (
+		SELECT payroll_year, AVG(avg_price_czk) AS avg_food
+		FROM t_kristyna_hlinomazova_project_sql_primary_final GROUP BY payroll_year
    ) f ON g.year = f.payroll_year
 ),
 analysis AS (
-   SELECT
-       year,
-       gdp_growth,
-       wage_growth,
-       food_growth,
-       LEAD(wage_growth) OVER (ORDER BY year) AS wage_growth_next_year,
-       LEAD(food_growth) OVER (ORDER BY year) AS food_growth_next_year
-   FROM base_data
+	SELECT
+		year,
+		gdp_growth,
+		wage_growth,
+		food_growth,
+		LEAD(wage_growth) OVER (ORDER BY year) AS wage_growth_next_year,
+		LEAD(food_growth) OVER (ORDER BY year) AS food_growth_next_year
+	FROM base_data
 )
-SELECT
-   *,
-   CASE
-       WHEN ABS(gdp_growth - wage_growth) <= 1 THEN 'Silná (týž rok)'
-       WHEN ABS(gdp_growth - wage_growth_next_year) <= 1 THEN 'Silná (násl. rok)'
-       ELSE 'Slabá / Žádná'
-   END AS wage_causality_check,
-   CASE
-       WHEN ABS(gdp_growth - food_growth) <= 1 THEN 'Silná (týž rok)'
-       WHEN ABS(gdp_growth - food_growth_next_year) <= 1 THEN 'Silná (násl. rok)'
-       ELSE 'Slabá / Žádná'
-   END AS food_causality_check
+SELECT 
+	*,
+	CASE
+		WHEN ABS(gdp_growth - wage_growth) <= 1 THEN 'Strong (same year)'
+		WHEN ABS(gdp_growth - wage_growth_next_year) <= 1 THEN 'Strong (next year)'
+		ELSE 'Weak / None'
+	END AS wage_causality_check,
+	CASE
+		WHEN ABS(gdp_growth - food_growth) <= 1 THEN 'Strong (same year)'
+		WHEN ABS(gdp_growth - food_growth_next_year) <= 1 THEN 'Strong (next year)'
+		ELSE 'Weak / None'
+	END AS food_causality_check
 FROM analysis
 WHERE gdp_growth IS NOT NULL
 ORDER BY year;
