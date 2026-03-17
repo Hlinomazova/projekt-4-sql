@@ -1,6 +1,6 @@
 -- 1. TVORBA PRIMÁRNÍ TABULKY 
 CREATE TABLE t_kristyna_hlinomazova_project_SQL_primary_final AS
-WITH data_mzdy AS (
+WITH payroll_data AS (
    -- První CTE: mzdy podle odvětví a roků
    SELECT
        payroll_year,
@@ -10,10 +10,10 @@ WITH data_mzdy AS (
    JOIN czechia_payroll_industry_branch AS cpib
        ON cp.industry_branch_code = cpib.code
    WHERE cp.value_type_code = 5958
-     AND cp.calculation_code = 200
+		AND cp.calculation_code = 200
    GROUP BY payroll_year, industry_name
 ),
-data_ceny AS (
+price_data AS (
    -- Druhé CTE: průměrné ceny potravin podle roků
    SELECT
        EXTRACT(YEAR FROM date_from) AS price_year,
@@ -29,17 +29,17 @@ data_ceny AS (
 )
 -- Finální spojení pro kontrolu dat
 SELECT
-   data_mzdy.payroll_year,
-   data_mzdy.industry_name,
-   data_mzdy.avg_month_salary_czk,
-   data_ceny.food_category,
-   data_ceny.avg_price_czk,
-   data_ceny.price_value,
-   data_ceny.price_unit
-FROM data_mzdy
-JOIN data_ceny
-   ON data_mzdy.payroll_year = data_ceny.price_year
-ORDER BY data_mzdy.payroll_year, data_mzdy.industry_name;
+   payroll_data.payroll_year,
+   payroll_data.industry_name,
+   payroll_data.avg_month_salary_czk,
+   price_data.food_category,
+   price_data.avg_price_czk,
+   price_data.price_value,
+   price_data.price_unit
+FROM payroll_data
+JOIN price_data
+   ON payroll_data.payroll_year = price_data.price_year
+ORDER BY payroll_data.payroll_year, payroll_data.industry_name;
 
 -- 2. TVORBA SEKUNDÁRNÍ TABULKY 
 CREATE TABLE t_kristyna_hlinomazova_project_SQL_secondary_final AS
@@ -68,7 +68,7 @@ FROM (
    FROM (
        SELECT DISTINCT industry_name, payroll_year, avg_month_salary_czk
        FROM t_kristyna_hlinomazova_project_SQL_primary_final
-   ) AS data_vyber
+   ) AS selected_payroll_data
 ) AS final_table
 WHERE salary_diff < 0  
 ORDER BY salary_diff ASC; 
