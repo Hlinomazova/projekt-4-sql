@@ -1,7 +1,7 @@
 -- 1. TVORBA PRIMÁRNÍ TABULKY 
 CREATE TABLE t_kristyna_hlinomazova_project_SQL_primary_final AS
 WITH payroll_data AS (
-	První CTE: mzdy podle odvětví a roků
+	-- První CTE: mzdy podle odvětví a roků
 	SELECT
 		payroll_year,
     	cpib.name AS industry_name,
@@ -14,18 +14,18 @@ WITH payroll_data AS (
 	GROUP BY payroll_year, industry_name
 ),
 price_data AS (
-   -- Druhé CTE: průměrné ceny potravin podle roků
-   SELECT
-       EXTRACT(YEAR FROM date_from) AS price_year,
-       cpc.name AS food_category,
-       ROUND(AVG(value)::numeric,2) AS avg_price_czk,
-       cpc.price_value,
-       cpc.price_unit
-   FROM czechia_price AS cpr
-   JOIN czechia_price_category AS cpc
-       ON cpr.category_code = cpc.code
-   WHERE region_code IS NULL
-   GROUP BY EXTRACT(YEAR FROM date_from), food_category, cpc.price_value, cpc.price_unit
+	-- Druhé CTE: průměrné ceny potravin podle roků
+	SELECT
+		EXTRACT(YEAR FROM date_from) AS price_year,
+		cpc.name AS food_category,
+		ROUND(AVG(value)::numeric,2) AS avg_price_czk,
+		cpc.price_value,
+		cpc.price_unit
+	FROM czechia_price AS cpr
+	JOIN czechia_price_category AS cpc
+		ON cpr.category_code = cpc.code
+	WHERE region_code IS NULL
+	GROUP BY EXTRACT(YEAR FROM date_from), food_category, cpc.price_value, cpc.price_unit
 )
 -- Finální spojení pro kontrolu dat
 SELECT
