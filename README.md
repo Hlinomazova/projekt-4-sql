@@ -11,15 +11,15 @@ Pro účely analýzy byly vytvořeny dvě hlavní tabulky, které sjednocují ro
 Tato tabulka sjednocuje data o průměrných mzdách a cenách potravin v ČR pro zajištění 100% porovnatelnosti v čase.
 
 * **Agregace mezd:** pomocí CTE (payroll_data) byly z tabulky czechia_payroll vyfiltrovány záznamy pro průměrné hrubé mzdy (kód 5958) a přepočtené počty zaměstnanců (kód 200). Tato data byla přes JOIN propojena s číselníkem czechia_payroll_industry_branch, aby bylo možné pracovat s reálnými názvy odvětví místo kódů. Výsledek byl následně seskupen podle roku a odvětví.
-* **Agregace cen:** Z tabulky `czechia_price` byly vybrány celorepublikové průměry kategorií potravin vyfiltrováním regionálních dat (`region_code IS NULL`). Rok měření byl získán funkcí `EXTRACT` z data platnosti a ceny byly zprůměrovány na úroveň roku.
-* **Finální integrace:** Obě sady byly propojeny přes **`JOIN`** pomocí společného klíče kalendářního roku. Výsledná tabulka umožňuje přímé srovnání vývoje mezd a cen pro každé odvětví a typ potraviny v jednom řádku.
+* **Agregace cen:** z tabulky `czechia_price` byly vybrány celorepublikové průměry kategorií potravin vyfiltrováním regionálních dat (`region_code IS NULL`). Rok měření byl získán funkcí `EXTRACT` z data platnosti a ceny byly zprůměrovány na úroveň roku.
+* **Finální integrace:** obě sady byly propojeny přes **`JOIN`** pomocí společného klíče kalendářního roku. Výsledná tabulka umožňuje přímé srovnání vývoje mezd a cen pro každé odvětví a typ potraviny v jednom řádku.
 
 ### t_kristyna_hlinomazova_project_SQL_secondary_final
-Tabulka slouží jako dodatečný podklad pro srovnání České republiky s širším evropským kontextem pomocí makroekonomických ukazatelů.
+Tabulka slouží jako dodatečný podklad pro srovnání České republiky s širším evropským kontextem.
 
-* **Zdroj dat:** Informace o HDP, GINI koeficientu a populaci byly čerpány z tabulek `countries` a `economies`.
-* **Filtrace a sjednocení:** Data byla filtrována výhradně na **evropské státy** a časové období **2006–2018**, aby přesně korespondovala s dostupností dat v primární tabulce.
-* **Zpracování:** Tabulky byly propojeny přes název státu (`country`), přičemž hodnoty HDP a populace byly zaokrouhleny pro lepší čitelnost a srozumitelnost při následných analýzách.
+* **Zdroj dat:** informace o HDP, GINI koeficientu a populaci byly čerpány z tabulek `countries` a `economies`.
+* **Filtrace a sjednocení:** data byla filtrována výhradně na **evropské státy** a časové období **2006–2018**, aby přesně korespondovala s dostupností dat v primární tabulce.
+* **Zpracování:** tabulky byly propojeny přes název státu (`country`), přičemž hodnoty HDP a populace byly zaokrouhleny pro lepší čitelnost a srozumitelnost při následných analýzách.
 
 ## **Výzkumné otázky a odpovědi**
 
