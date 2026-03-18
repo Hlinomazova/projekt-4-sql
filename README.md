@@ -32,23 +32,27 @@ Ostatní roky: K mírnějším poklesům docházelo ojediněle i v letech 2009, 
 Závěr: Dlouhodobý trend je rostoucí, ale mzdy nejsou imunní vůči meziročním výkyvům, což se nejvíce projevilo během ekonomického útlumu v roce 2013.
 
 ### **2. Kolik je možné si koupit litrů mléka a kilogramů chleba za první a poslední srovnatelné období v dostupných datech cen a mezd?**
-ROK  ODVĚTVÍ                          MZDA   POTRAVINA               CENA   JEDN. KUPNÍ SÍLA
-2006 Vzdělávání                       20030  Chléb konzumní kmínový  16.12  kg    1243
-2006 Zásobování vodou (...)           18740  Mléko polotučné         14.44  l     1298
-2006 Zásobování vodou (...)           18740  Chléb konzumní kmínový  16.12  kg    1163
-2006 Zdravotní a sociální péče        19042  Mléko polotučné         14.44  l     1319
-2006 Zdravotní a sociální péče        19042  Chléb konzumní kmínový  16.12  kg    1181
-2006 Zemědělství, lesnictví...        14818  Mléko polotučné         14.44  l     1026
-2006 Zemědělství, lesnictví...        14818  Chléb konzumní kmínový  16.12  kg    919
-2006 Zpracovatelský průmysl           18482  Chléb konzumní kmínový  16.12  kg    1147
-2006 Zpracovatelský průmysl           18482  Mléko polotučné         14.44  l     1280
-...
-2018 Informační a kom. činnosti       56728  Chléb konzumní kmínový  24.24  kg    2340
-2018 Informační a kom. činnosti       56728  Mléko polotučné         19.82  l     2862
-2018 Peněžnictví a pojišťovnictví     54883  Chléb konzumní kmínový  24.24  kg    2264
-2018 Peněžnictví a pojišťovnictví     54883  Mléko polotučné         19.82  l     2769
-2018 Ubytování, stravování...         19270  Chléb konzumní kmínový  24.24  kg    795
-2018 Ubytování, stravování...         19270  Mléko polotučné         19.82  l     972
+
+### 2. Kolik je možné si koupit litrů mléka a kilogramů chleba za první a poslední srovnatelné období?
+
+| Rok | Odvětví | Mzda (Kč) | Potravina | Cena (Kč) | Jedn. | **Kupní síla** |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **2006** | Vzdělávání | 20 030 | Chléb konzumní kmínový | 16.12 | kg | **1 243** |
+| **2006** | Zásobování vodou (...) | 18 740 | Mléko polotučné | 14.44 | l | **1 298** |
+| **2006** | Zásobování vodou (...) | 18 740 | Chléb konzumní kmínový | 16.12 | kg | **1 163** |
+| **2006** | Zdravotní a sociální péče | 19 042 | Mléko polotučné | 14.44 | l | **1 319** |
+| **2006** | Zdravotní a sociální péče | 19 042 | Chléb konzumní kmínový | 16.12 | kg | **1 181** |
+| **2006** | Zemědělství, lesnictví... | 14 818 | Mléko polotučné | 14.44 | l | **1 026** |
+| **2006** | Zemědělství, lesnictví... | 14 818 | Chléb konzumní kmínový | 16.12 | kg | **919** |
+| **2006** | Zpracovatelský průmysl | 18 482 | Chléb konzumní kmínový | 16.12 | kg | **1 147** |
+| **2006** | Zpracovatelský průmysl | 18 482 | Mléko polotučné | 14.44 | l | **1 280** |
+| ... | ... | ... | ... | ... | ... | ... |
+| **2018** | Informační a kom. činnosti | 56 728 | Chléb konzumní kmínový | 24.24 | kg | **2 340** |
+| **2018** | Informační a kom. činnosti | 56 728 | Mléko polotučné | 19.82 | l | **2 862** |
+| **2018** | Peněžnictví a pojišťovnictví | 54 883 | Chléb konzumní kmínový | 24.24 | kg | **2 264** |
+| **2018** | Peněžnictví a pojišťovnictví | 54 883 | Mléko polotučné | 19.82 | l | **2 769** |
+| **2018** | Ubytování, stravování... | 19 270 | Chléb konzumní kmínový | 24.24 | kg | **795** |
+| **2018** | Ubytování, stravování... | 19 270 | Mléko polotučné | 19.82 | l | **972** |
 
 ### **3. Která kategorie potravin zdražuje nejpomaleji (je u ní nejnižší percentuální meziroční nárůst)?**
 Analýza ukázala, že nejpomaleji zdražující kategorií je Cukr krystalový. V jeho případě se však nejedná o zdražování, ale o průměrný meziroční pokles ceny o 1,92 %. Druhou položkou, která v průměru zlevňovala, byla Rajská jablka červená kulatá s poklesem o 0,74 %.
