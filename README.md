@@ -3,27 +3,23 @@
 ## **Zadání projektu**
 Cílem projektu bylo připravit robustní datový podklad pro porovnání dostupnosti základních potravin na základě průměrných příjmů v České republice v letech 2006–2018. Součástí zadání bylo také zpracování dodatečného materiálu v podobě tabulky s HDP, GINI koeficientem a populací dalších evropských států ve stejném období, aby bylo možné sledovat vývoj v ČR v širším evropském kontextu.
 
-## **Popis tvorby primární a sekundární tabulky**
-Pro účely analýzy byly vytvořeny dvě hlavní datové tabulky:
+## 2. Popis tvorby primární a sekundární tabulky
+
+Pro účely analýzy byly vytvořeny dvě hlavní datové sady, které sjednocují roztříštěná data z různých vládních a ekonomických zdrojů do přehledných celků.
 
 ### t_kristyna_hlinomazova_project_SQL_primary_final
-Tato tabulka sjednocuje data o průměrných mzdách a cenách potravin v ČR. Data byla filtrována na společné kalendářní roky pro zajištění porovnatelnosti.
+Tato tabulka sjednocuje data o průměrných mzdách a cenách potravin v ČR pro zajištění 100% porovnatelnosti v čase.
 
-**Technický postup tvorby:**
-
-* **Agregace mezd (`payroll_data`):** Pomocí CTE byly z tabulky `czechia_payroll` vyfiltrovány pouze záznamy pro průměrné hrubé mzdy (kód **5958**) přepočtené na plné úvazky (kód **200**). Data byla následně seskupena (`GROUP BY`) podle roku a odvětví.
-* **Agregace cen (`price_data`):** Z tabulky `czechia_price` byly vybrány celorepublikové průměry (`region_code IS NULL`). Rok měření byl získán funkcí `EXTRACT` z datumu a ceny byly zprůměrovány pro každou kategorii potravin v daném roce.
-* **Finální integrace:** Obě sady byly propojeny přes **`JOIN`** pomocí společného klíče kalendářního roku.
+* **Agregace mezd:** Pomocí **CTE** (`payroll_data`) byly z tabulky `czechia_payroll` vyfiltrovány záznamy pro průměrné hrubé mzdy (kód **5958**) a přepočtené počty zaměstnanců (kód **200**). Data byla seskupena (`GROUP BY`) podle roku a odvětví.
+* **Agregace cen:** Z tabulky `czechia_price` byly vybrány celorepublikové průměry kategorií potravin vyfiltrováním regionálních dat (`region_code IS NULL`). Rok měření byl získán funkcí `EXTRACT` z data platnosti a ceny byly zprůměrovány na úroveň roku.
+* **Finální integrace:** Obě sady byly propojeny přes **`JOIN`** pomocí společného klíče kalendářního roku. Výsledná tabulka umožňuje přímé srovnání vývoje mezd a cen pro každé odvětví a typ potraviny v jednom řádku.
 
 ### t_kristyna_hlinomazova_project_SQL_secondary_final
-Tato tabulka slouží jako dodatečný podklad pro srovnání České republiky s širším evropským kontextem.
-
-**Technický postup tvorby:**
+Tabulka slouží jako dodatečný podklad pro srovnání České republiky s širším evropským kontextem pomocí makroekonomických ukazatelů.
 
 * **Zdroj dat:** Informace o HDP, GINI koeficientu a populaci byly čerpány z tabulek `countries` a `economies`.
-* **Filtrace a sjednocení:** Tabulky byly propojeny přes název státu. Výběr byl omezen pouze na evropské státy a časové období 2006–2018, aby data přesně odpovídala časovému rozsahu primární tabulky.
-
-**t_kristyna_hlinomazova_project_SQL_secondary_final:** Tato tabulka obsahuje dodatečná makroekonomická data (HDP, GINI koeficient a populace) pro ostatní evropské státy ve stejném období.
+* **Filtrace a sjednocení:** Data byla filtrována výhradně na **evropské státy** a časové období **2006–2018**, aby přesně korespondovala s dostupností dat v primární tabulce.
+* **Zpracování:** Tabulky byly propojeny přes název státu (`country`), přičemž hodnoty HDP a populace byly zaokrouhleny pro lepší čitelnost a srozumitelnost při následných analýzách.
 
 ## **Výzkumné otázky a odpovědi**
 
