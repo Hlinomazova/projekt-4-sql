@@ -20,7 +20,7 @@ Při pohledu na celkové období 2006–2018 mzdy vzrostly ve všech sledovanýc
 Ostatní roky: K mírnějším poklesům docházelo ojediněle i v letech 2009, 2010 nebo 2011.
 Závěr: Dlouhodobý trend je rostoucí, ale mzdy nejsou imunní vůči meziročním výkyvům, což se nejvíce projevilo během ekonomického útlumu v roce 2013.
 
-**2. Kolik je možné si koupit litrů mléka a kilogramů chleba za první a poslední srovnatelné období v dostupných datech cen a mezd?**
+### **2. Kolik je možné si koupit litrů mléka a kilogramů chleba za první a poslední srovnatelné období v dostupných datech cen a mezd?**
 ROK  ODVĚTVÍ                          MZDA   POTRAVINA               CENA   JEDN. KUPNÍ SÍLA
 2006 Vzdělávání                       20030  Chléb konzumní kmínový  16.12  kg    1243
 2006 Zásobování vodou (...)           18740  Mléko polotučné         14.44  l     1298
