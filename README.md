@@ -5,7 +5,7 @@ Cílem projektu bylo připravit robustní datový podklad pro porovnání dostup
 
 ## Popis tvorby primární a sekundární tabulky
 
-Pro účely analýzy byly vytvořeny dvě hlavní datové sady, které sjednocují roztříštěná data z různých vládních a ekonomických zdrojů do přehledných celků.
+Pro účely analýzy byly vytvořeny dvě hlavní datové sady, které sjednocují roztříštěná data z různých zdrojů do přehledných celků.
 
 ### t_kristyna_hlinomazova_project_SQL_primary_final
 Tato tabulka sjednocuje data o průměrných mzdách a cenách potravin v ČR pro zajištění 100% porovnatelnosti v čase.
