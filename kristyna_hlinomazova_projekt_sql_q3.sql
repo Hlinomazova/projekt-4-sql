@@ -4,7 +4,7 @@ WITH price_tables AS (
 		payroll_year, 
 		food_category,
 		AVG(avg_price_czk) AS avg_price_current_year,
-		LAG(AVG(avg_price_czk)) OVER (PARTITION BY food_category ORDER BY payroll_year) AS avg_price_previous_yea
+		LAG(AVG(avg_price_czk)) OVER (PARTITION BY food_category ORDER BY payroll_year) AS avg_price_previous_year
 	FROM t_kristyna_hlinomazova_project_sql_primary_final
 	GROUP BY payroll_year, food_category
 ),
