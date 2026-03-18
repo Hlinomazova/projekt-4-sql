@@ -3,7 +3,7 @@
 ## **Zadání projektu**
 Cílem projektu bylo připravit robustní datový podklad pro porovnání dostupnosti základních potravin na základě průměrných příjmů v České republice v letech 2006–2018. Součástí zadání bylo také zpracování dodatečného materiálu v podobě tabulky s HDP, GINI koeficientem a populací dalších evropských států ve stejném období, aby bylo možné sledovat vývoj v ČR v širším evropském kontextu.
 
-## 2. Popis tvorby primární a sekundární tabulky
+## **Popis tvorby primární a sekundární tabulky
 
 Pro účely analýzy byly vytvořeny dvě hlavní datové sady, které sjednocují roztříštěná data z různých vládních a ekonomických zdrojů do přehledných celků.
 
