@@ -33,8 +33,6 @@ Závěr: Dlouhodobý trend je rostoucí, ale mzdy nejsou imunní vůči meziroč
 
 ### **2. Kolik je možné si koupit litrů mléka a kilogramů chleba za první a poslední srovnatelné období v dostupných datech cen a mezd?**
 
-### 2. Kolik je možné si koupit litrů mléka a kilogramů chleba za první a poslední srovnatelné období?
-
 | Rok | Odvětví | Mzda (Kč) | Potravina | Cena (Kč) | Jedn. | **Kupní síla** |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | **2006** | Vzdělávání | 20 030 | Chléb konzumní kmínový | 16.12 | kg | **1 243** |
