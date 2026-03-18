@@ -8,6 +8,16 @@ Pro účely analýzy byly vytvořeny dvě hlavní datové tabulky:
 
 **t_kristyna_hlinomazova_project_SQL_primary_final:** Tato tabulka sjednocuje data o průměrných mzdách (podle odvětví) a cenách vybraných kategorií potravin. Data byla filtrována na společné kalendářní roky pro zajištění porovnatelnosti.
 
+Technický postup tvorby:
+Agregace mezd (payroll_data):
+Pomocí CTE byly z tabulky czechia_payroll vyfiltrovány pouze záznamy pro průměrné hrubé mzdy (kód 5958) přepočtené na plné úvazky (kód 200). Data byla následně seskupena (GROUP BY) podle roku a odvětví, čímž vznikl čistý přehled průměrných příjmů.
+
+Agregace cen (price_data):
+Z tabulky czechia_price byly vybrány celorepublikové průměry (odfiltrováním regionálních dat pomocí region_code IS NULL). Rok měření byl získán funkcí EXTRACT z datumu a ceny byly zprůměrovány pro každou kategorii potravin v daném roce.
+
+Finální integrace:
+Obě sady byly propojeny přes JOIN pomocí společného klíče kalendářního roku. Výsledná tabulka tak umožňuje přímé srovnání vývoje mezd a cen pro každé odvětví a typ potraviny v jednom řádku.
+
 **t_kristyna_hlinomazova_project_SQL_secondary_final:** Tato tabulka obsahuje dodatečná makroekonomická data (HDP, GINI koeficient a populace) pro ostatní evropské státy ve stejném období.
 
 ## **Výzkumné otázky a odpovědi**
