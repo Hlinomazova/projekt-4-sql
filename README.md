@@ -6,16 +6,22 @@ Cílem projektu bylo připravit robustní datový podklad pro porovnání dostup
 ## **Popis tvorby primární a sekundární tabulky**
 Pro účely analýzy byly vytvořeny dvě hlavní datové tabulky:
 
-**t_kristyna_hlinomazova_project_SQL_primary_final**
+### t_kristyna_hlinomazova_project_SQL_primary_final
 Tato tabulka sjednocuje data o průměrných mzdách a cenách potravin v ČR. Data byla filtrována na společné kalendářní roky pro zajištění porovnatelnosti.
 
-Technický postup tvorby:
+**Technický postup tvorby:**
 
-Agregace mezd (payroll_data): Pomocí CTE byly z tabulky czechia_payroll vyfiltrovány pouze záznamy pro průměrné hrubé mzdy (kód 5958) přepočtené na plné úvazky (kód 200). Data byla následně seskupena (GROUP BY) podle roku a odvětví, čímž vznikl čistý přehled průměrných příjmů.
+* **Agregace mezd (`payroll_data`):** Pomocí CTE byly z tabulky `czechia_payroll` vyfiltrovány pouze záznamy pro průměrné hrubé mzdy (kód **5958**) přepočtené na plné úvazky (kód **200**). Data byla následně seskupena (`GROUP BY`) podle roku a odvětví.
+* **Agregace cen (`price_data`):** Z tabulky `czechia_price` byly vybrány celorepublikové průměry (`region_code IS NULL`). Rok měření byl získán funkcí `EXTRACT` z datumu a ceny byly zprůměrovány pro každou kategorii potravin v daném roce.
+* **Finální integrace:** Obě sady byly propojeny přes **`JOIN`** pomocí společného klíče kalendářního roku.
 
-Agregace cen (price_data): Z tabulky czechia_price byly vybrány celorepublikové průměry (odfiltrováním regionálních dat pomocí region_code IS NULL). Rok měření byl získán funkcí EXTRACT z datumu a ceny byly zprůměrovány pro každou kategorii potravin v daném roce.
+### t_kristyna_hlinomazova_project_SQL_secondary_final
+Tato tabulka slouží jako dodatečný podklad pro srovnání České republiky s širším evropským kontextem.
 
-Finální integrace: Obě sady byly propojeny přes JOIN pomocí společného klíče kalendářního roku. Výsledná tabulka tak umožňuje přímé srovnání vývoje mezd a cen pro každé odvětví a typ potraviny v jednom řádku.
+**Technický postup tvorby:**
+
+* **Zdroj dat:** Informace o HDP, GINI koeficientu a populaci byly čerpány z tabulek `countries` a `economies`.
+* **Filtrace a sjednocení:** Tabulky byly propojeny přes název státu. Výběr byl omezen pouze na evropské státy a časové období 2006–2018, aby data přesně odpovídala časovému rozsahu primární tabulky.
 
 **t_kristyna_hlinomazova_project_SQL_secondary_final:** Tato tabulka obsahuje dodatečná makroekonomická data (HDP, GINI koeficient a populace) pro ostatní evropské státy ve stejném období.
 
