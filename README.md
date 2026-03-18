@@ -6,9 +6,9 @@ Cílem projektu bylo připravit robustní datový podklad pro porovnání dostup
 ## **Popis tvorby primární a sekundární tabulky**
 Pro účely analýzy byly vytvořeny dvě hlavní datové tabulky:
 
-t_kristyna_hlinomazova_project_SQL_primary_final: Tato tabulka sjednocuje data o průměrných mzdách (podle odvětví) a cenách vybraných kategorií potravin. Data byla filtrována na společné kalendářní roky pro zajištění porovnatelnosti.
+**t_kristyna_hlinomazova_project_SQL_primary_final:** Tato tabulka sjednocuje data o průměrných mzdách (podle odvětví) a cenách vybraných kategorií potravin. Data byla filtrována na společné kalendářní roky pro zajištění porovnatelnosti.
 
-t_kristyna_hlinomazova_project_SQL_secondary_final: Tato tabulka obsahuje dodatečná makroekonomická data (HDP, GINI koeficient a populace) pro ostatní evropské státy ve stejném období.
+**t_kristyna_hlinomazova_project_SQL_secondary_final:** Tato tabulka obsahuje dodatečná makroekonomická data (HDP, GINI koeficient a populace) pro ostatní evropské státy ve stejném období.
 
 ## **Výzkumné otázky a odpovědi**
 
