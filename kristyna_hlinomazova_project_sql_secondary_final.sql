@@ -1,4 +1,4 @@
--- 2. SECONDARY TABLE CREATION
+-- 2. TVORBA SEKUNDÁRNÍ TABULKY
 CREATE TABLE t_kristyna_hlinomazova_project_SQL_secondary_final AS
 SELECT
 	e.year,
@@ -10,4 +10,4 @@ FROM countries AS c
 JOIN economies AS e
 	ON c.country = e.country
 WHERE c.continent = 'Europe'
-	AND e.year BETWEEN 2006 AND 2018; -- Matching the time range of Czech payroll data
+	AND e.year BETWEEN 2006 AND 2018; 
