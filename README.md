@@ -1,4 +1,4 @@
-#**Analýza dostupnosti základních potravin (SQL Projekt)**
+# **Analýza dostupnosti základních potravin (SQL Projekt)**
 
 **1. Zadání projektu**
 Cílem projektu bylo připravit robustní datový podklad pro porovnání dostupnosti základních potravin na základě průměrných příjmů v ČR v letech 2006–2018. Součástí bylo i srovnání s HDP a demografickými daty evropských států.
