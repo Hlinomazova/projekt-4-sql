@@ -1,4 +1,3 @@
--- 3. VÝZKUMNÉ OTÁZKY
 -- Q1: Rostou v průběhu let mzdy ve všech odvětvích, nebo v některých klesají?
 -- Identifikace konkrétních odvětví a let, kdy došlo k meziročnímu poklesu
 SELECT *
