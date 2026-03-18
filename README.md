@@ -39,14 +39,14 @@ ROK  ODVĚTVÍ                          MZDA   POTRAVINA               CENA   JE
 2018 Ubytování, stravování...         19270  Chléb konzumní kmínový  24.24  kg    795
 2018 Ubytování, stravování...         19270  Mléko polotučné         19.82  l     972
 
-**3. Která kategorie potravin zdražuje nejpomaleji (je u ní nejnižší percentuální meziroční nárůst)?**
+### **3. Která kategorie potravin zdražuje nejpomaleji (je u ní nejnižší percentuální meziroční nárůst)?**
 Analýza ukázala, že nejpomaleji zdražující kategorií je Cukr krystalový. V jeho případě se však nejedná o zdražování, ale o průměrný meziroční pokles ceny o 1,92 %. Druhou položkou, která v průměru zlevňovala, byla Rajská jablka červená kulatá s poklesem o 0,74 %.
 První kategorií, u které byl zaznamenán skutečný (kladný) nárůst ceny, jsou Banány žluté, které zdražovaly v průměru pouze o 0,81 % ročně.
 
-**4. Existuje rok, ve kterém byl meziroční nárůst cen potravin výrazně vyšší než růst mezd (větší než 10 %)?**
+### **4. Existuje rok, ve kterém byl meziroční nárůst cen potravin výrazně vyšší než růst mezd (větší než 10 %)?**
 Při srovnání meziročního nárůstu cen potravin a mezd bylo zjištěno, že v žádném sledovaném roce rozdíl nepřekročil hranici 10 %. Nejvýraznější rozdíl nastal v roce 2013, kdy ceny potravin vzrostly o 5,10 %, zatímco mzdy zaznamenaly pokles o 1,56 %. Celkový rozdíl tak činil 6,65 procentního bodu.
 
-**5. Má výška HDP vliv na změny ve mzdách a cenách potravin? Neboli, pokud HDP vzroste výrazněji v jednom roce, projeví se to na cenách potravin či mzdách ve stejném nebo následujícím roce výraznějším růstem?**
+### **5. Má výška HDP vliv na změny ve mzdách a cenách potravin? Neboli, pokud HDP vzroste výrazněji v jednom roce, projeví se to na cenách potravin či mzdách ve stejném nebo následujícím roce výraznějším růstem?**
 Analýza dat ukazuje, že vliv HDP na mzdy a ceny není jednoznačný. Vliv na mzdy (poměr 6:6): Vztah mezi HDP a mzdami je přesně vyrovnaný. V 6 případech byla zaznamenána silná korelace (buď v témže roce, nebo s ročním zpožděním), ale ve zbývajících 6 případech byla vazba slabá nebo žádná. To potvrzuje, že mzdy reagují na výkon ekonomiky jen v polovině případů. U vlivu HDP na ceny potravin  je vazba výrazně slabší. Pouze ve 3 případech byla zaznamenána silnější souvislost s HDP, zatímco v 9 případech byla korelace slabá nebo žádná. Ceny potravin se vyvíjejí nezávisle na HDP (např. v roce 2012 kleslo HDP o 0,79 %, ale ceny potravin vzrostly o 6,73 %).
 Závěr: Vliv HDP na mzdy je nepravidelný (poměr 50/50), což znemožňuje využít HDP jako spolehlivý prediktor pro růst platů. U potravin je vliv HDP téměř nulový.
 
