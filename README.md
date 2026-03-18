@@ -1,16 +1,16 @@
 # **Analýza dostupnosti základních potravin (SQL Projekt)**
 
-**1. Zadání projektu**
+## **1. Zadání projektu**
 Cílem projektu bylo připravit robustní datový podklad pro porovnání dostupnosti základních potravin na základě průměrných příjmů v ČR v letech 2006–2018. Součástí bylo i srovnání s HDP a demografickými daty evropských států.
 
-**2. Popis tvorby primární a sekundární tabulky**
+## **2. Popis tvorby primární a sekundární tabulky**
 Pro účely analýzy byly vytvořeny dvě hlavní datové tabulky:
 
 t_kristyna_hlinomazova_project_SQL_primary_final: Tato tabulka sjednocuje data o průměrných mzdách (podle odvětví) a cenách vybraných kategorií potravin. Data byla filtrována na společné kalendářní roky pro zajištění porovnatelnosti.
 
 t_kristyna_hlinomazova_project_SQL_secondary_final: Tato tabulka obsahuje dodatečná makroekonomická data (HDP, GINI koeficient a populace) pro ostatní evropské státy ve stejném období.
 
-**3. Výzkumné otázky a odpovědi**
+## **3. Výzkumné otázky a odpovědi**
 
 **Chybějící a neúplná data**
 Vzhledem k tomu, že data o cenách potravin jsou dostupná až od roku 2006, byla analýza omezena na období 2006–2018, ačkoliv mzdová data sahají až do roku 2000. V tabulce mezd se vyskytují záznamy s hodnotou NULL u odvětví, které však nepředstavují chybu, nýbrž celorepublikový průměr využitý pro výpočet celkové kupní síly. Z důvodu regionální neúplnosti u cen potravin pracuje analýza s celorepublikovými průměry. Do srovnání zdražování byly zahrnuty pouze potraviny se souvislou řadou dat, čímž byly vyloučeny položky s výpadky či pozdějším počátkem sledování.
