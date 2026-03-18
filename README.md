@@ -10,7 +10,7 @@ Pro účely analýzy byly vytvořeny dvě hlavní datové sady, které sjednocuj
 ### t_kristyna_hlinomazova_project_SQL_primary_final
 Tato tabulka sjednocuje data o průměrných mzdách a cenách potravin v ČR pro zajištění 100% porovnatelnosti v čase.
 
-* **Agregace mezd:** Pomocí **CTE** (`payroll_data`) byly z tabulky `czechia_payroll` vyfiltrovány záznamy pro průměrné hrubé mzdy (kód **5958**) a přepočtené počty zaměstnanců (kód **200**). Data byla seskupena (`GROUP BY`) podle roku a odvětví.
+* **Agregace mezd:** Pomocí **CTE** (`payroll_data`) byly z tabulky `czechia_payroll` vyfiltrovány záznamy pro průměrné hrubé mzdy (kód **5958**) a přepočtené počty zaměstnanců (kód **200**). Data byla seskupena podle roku a odvětví.
 * **Agregace cen:** Z tabulky `czechia_price` byly vybrány celorepublikové průměry kategorií potravin vyfiltrováním regionálních dat (`region_code IS NULL`). Rok měření byl získán funkcí `EXTRACT` z data platnosti a ceny byly zprůměrovány na úroveň roku.
 * **Finální integrace:** Obě sady byly propojeny přes **`JOIN`** pomocí společného klíče kalendářního roku. Výsledná tabulka umožňuje přímé srovnání vývoje mezd a cen pro každé odvětví a typ potraviny v jednom řádku.
 
